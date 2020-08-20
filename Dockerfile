@@ -1,10 +1,5 @@
-FROM python:3.8
+FROM python:3.6.1-alpine
 WORKDIR /app
-RUN pip install pipenv
-ENV PIPENV_VENV_IN_PROJECT=true 
-COPY Pipfile Pipfile.lock service.proto /app/
-RUN pipenv lock -r > requirements.txt
+ADD . /app
 RUN pip install -r requirements.txt
-RUN mkdir -p ./src && python -m grpc_tools.protoc -I. --python_out=./src --grpc_python_out=./src ./service.proto
-COPY . /app
-ENTRYPOINT [ "python", "src/server.py" ]
+CMD ["python","src/app.py"]
