@@ -19,7 +19,7 @@ jobs:
         shell: bash
       - uses: mr-smithers-excellent/docker-build-push@v4
         with:
-         image: ahmedmahmoud25/flasktest:latest
+         image: ahmedmahmoud25/flasktest
          registry: docker.io
          username: ${{ secrets.DOCKER_USERNAME }}
          password: ${{ secrets.DOCKER_PASSWORD }}
